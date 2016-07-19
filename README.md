@@ -37,6 +37,7 @@ See [shifter's wiki](https://github.com/nersc/shifter/wiki) and [slurm's website
 
 
 **Troubleshooting**
+
 It happened that the provision partially went wrong because of a short unavailability of the APT service. In such cases the quickest solution is running the provision again:
 ```shell
 vagrant reload --provision <machine name>
