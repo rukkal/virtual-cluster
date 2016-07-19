@@ -1,0 +1,10 @@
+*.pyc
+*.o
+*.lo
+*.la
+*.swp
+*.swo
+.cache
+*.log
+*.deps
+*.libs

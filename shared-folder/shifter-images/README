@@ -1,0 +1,3 @@
+This directory is used to store the images pulled by shifter imagegw.
+
+The directory must be mounted/shared by controller and servers.
