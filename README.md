@@ -1,5 +1,4 @@
-# virtual-cluster
-Vagrant-based virtual cluster with slurm + shifter on top of Ubuntu Trusty.
+A vagrant-based virtual cluster with slurm + shifter on top of Ubuntu Trusty
 -------------------------
 
 **Usage**
@@ -25,11 +24,18 @@ vagrant ssh controller
 shifterimg pull docker:debian:jessie
 salloc -N 1 -t 10 --image=docker:debian:jessie
 srun shifter cat /etc/debian_version
-
-EXPECTED OUTPUT: 8.5 (eureka! we ran 'cat' in a debian container!)
 ```
-See [shifter's wiki](https://github.com/nersc/shifter/wiki) for more information.
+EXPECTED OUTPUT: 8.5 (eureka! we ran 'cat' in a debian container!)
+
+See [shifter's wiki](https://github.com/nersc/shifter/wiki) and [slurm's website](http://slurm.schedmd.com) for more information.
 
 **Details**
 - Tested on Ubuntu 16.04 with Vagrant 1.8.1 and Virtualbox 5.0.18
-- Cluster: 1 server node + 1 controller
+- Cluster configuration: 1 server node + 1 controller node
+
+
+**Troubleshooting**
+It happened that the provision partially went wrong because of a short unavailability of the APT service. In such cases the quickest solution is running the provision again:
+```shell
+vagrant reload --provision <machine name>
+```
