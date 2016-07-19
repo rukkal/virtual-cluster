@@ -3,7 +3,9 @@ A vagrant-based virtual cluster with slurm + shifter on top of Ubuntu Trusty
 
 **Usage**
 - cd to the project's root folder (where Vagrantfile is located)
-- vagrant up
+``shell
+vagrant up
+```
 - start services in the server machine:
 ```shell
 vagrant ssh server
