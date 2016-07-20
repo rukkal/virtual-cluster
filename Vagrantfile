@@ -50,7 +50,7 @@ Vagrant.configure("2") do |global_config|
             config.vm.synced_folder "shared-folder", "/shared-folder"
 
             config.vm.provider :virtualbox do |v|
-                v.customize ["modifyvm", :id, "--memory", "512"]
+                v.customize ["modifyvm", :id, "--memory", "1024"]
             end
 
             config.vm.provision :shell,
