@@ -6,7 +6,7 @@
 ## How to use it
 - create the virtual machines and provision them:
 ```shell
-cd <project's root folder (where Vagrantfile is located)>
+cd <project root folder> # i.e. where vagrant file is located
 vagrant up
 ```
 - start services in the server machine:
@@ -36,11 +36,11 @@ See [shifter's wiki](https://github.com/nersc/shifter/wiki) and [slurm's website
 
 ## Details
 - Tested on Ubuntu 16.04 with Vagrant 1.8.1 and Virtualbox 5.0.18
-- Cluster configuration: 1 server node + 1 controller node
+- Cluster configuration: 1 controller node + 1 server node
 
 
 ## Troubleshooting
-It happened that the provision partially went wrong because of a short unavailability of the APT service. In such cases the quickest solution is running the provision again:
+It occurred that the provision partially went wrong because of a short unavailability of the APT service. In such cases the solution was running the provision again:
 ```shell
 vagrant reload --provision <machine name>
 ```
