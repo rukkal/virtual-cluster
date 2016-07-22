@@ -10,5 +10,10 @@ cd slurm-16.05.2
 make
 make install
 
+STATE_SAVE_LOCATION=/var/lib/slurm
+mkdir -p $STATE_SAVE_LOCATION
+chown vagrant $STATE_SAVE_LOCATION
+chmod 755 $STATE_SAVE_LOCATION
+
 cp /shared-folder/installation/init.d.slurm /etc/init.d/slurm
 ln -s /shared-folder/installation/slurm.conf /etc/slurm.conf
