@@ -3,7 +3,7 @@
 echo "installing slurm"
 
 cd $(mktemp -d)
-wget http://www.schedmd.com/download/latest/slurm-16.05.2.tar.bz2
+wget http://www.schedmd.com/download/archive/slurm-16.05.2.tar.bz2
 tar xvf slurm-16.05.2.tar.bz2
 cd slurm-16.05.2
 ./configure --prefix=/usr --sysconfdir=/etc
