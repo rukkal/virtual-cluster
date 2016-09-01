@@ -33,6 +33,27 @@ EXPECTED OUTPUT: 8.5 (eureka! we ran 'cat' in a debian container!)
 
 See [shifter's wiki](https://github.com/nersc/shifter/wiki) and [slurm's website](http://slurm.schedmd.com) for more information.
 
+## How the installation works
+The list below provides an overview of the steps performed in the Vagrantfile. The described steps are performed inside each guest machine (controller + server). The directory "shared-folder" provided in this repository is mounted at /shared-folder inside the guest machines.
+1. Modify /etc/hosts so that "controller" will know the address of "server" and vice versa.
+2. Install various dependencies of slurm and shifter with APT.
+3. Install and configure munge (install-munge.sh):
+   1. Install munge with APT.
+   2. Copy /shared-folder/installation/munge.key to /etc/munge and change owner and permissions. WARNING: munge.key is already provided in this repository. However, for any more serious use than this insecure toy virtual cluster a new munge.key should be generated with /usr/sbin/create-munge-key.
+4. Install and configure slurm (install-slurm.sh):
+   1. Download, build and install slurm from source.
+   2. Set up a state save location for slurm in /var/lib/slurm.
+   3. Set up startup scripts in /etc/init.d/slurm.
+   4. Create a symlink /etc/slurm.conf to /shared-folder/installation/slurm.conf.
+5. Install and configure shifter (install-shifter.sh):
+   1. Build and install udiRoot in /opt/shifter/udiRoot. The most important things that get installed are the shifter and shifterimg executables as well as the plugin for slurm. The shifter and shifterimg executables provide the user interface of shifter.
+   2. Copy /shared-folder/installation/udiRoot.conf to /etc/shifter/udiRoot.conf. The file udiRoot.conf provides most of the configuration details of shifter.
+   3. Configure slurm to use the shifter plugin. This is achieved through the configuration file /etc/plugstack.conf.
+   4. Install image gateway:
+      1. Set up a python virtual environment in /opt/shifter/imagegw where the image gateway will be executed.
+      2. Create a symlink /etc/shifter/imagemanager.json to /shared-folder/installation/imagemanager.json. The file imagemanager.json provides configuration details of the image gateway.
+      3. Set up startup scripts in /etc/init.d.
+
 ## Details
 - Tested on Ubuntu 16.04 with Vagrant 1.8.1 and Virtualbox 5.0.18
 - Cluster configuration: 1 controller node + 1 server node
