@@ -35,6 +35,7 @@ See [shifter's wiki](https://github.com/nersc/shifter/wiki) and [slurm's website
 
 ## How the installation works
 The list below provides an overview of the steps performed in the Vagrantfile. The described steps are performed inside each guest machine (controller + server). The directory "shared-folder" provided in this repository is mounted at /shared-folder inside the guest machines.
+
 1. Modify /etc/hosts so that "controller" will know the address of "server" and vice versa.
 2. Install various dependencies of slurm and shifter with APT.
 3. Install and configure munge (install-munge.sh):
