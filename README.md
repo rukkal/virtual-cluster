@@ -75,7 +75,7 @@ db.images.find()
 ```
 MongoDB will display a list of documents. Find the document corresponding to the image that was being pulled (status field: "PENDING") and remove it using its _id field:
 ```shell
-db.images.remove("_id" : ObjectId("<the ID>"))
+db.images.remove({"_id" : ObjectId("<the ID>")})
 ```
 Then insert a new document as shown below. Just adapt the fields so that they match the actual image and shifter environment.
 ```shell
