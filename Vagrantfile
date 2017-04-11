@@ -4,7 +4,7 @@ slurm_cluster = {
         :hostname => "controller",
         :ipaddress => "10.10.10.3"
     },
-    :server => {                                                              
+    :server => {
         :hostname => "server",
         :ipaddress => "10.10.10.4"
     }
@@ -15,14 +15,13 @@ echo "10.10.10.3    controller" >> /etc/hosts
 echo "10.10.10.4    server" >> /etc/hosts
 #provision dependencies
 sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ precise universe multiverse"
-sudo add-apt-repository -y ppa:ondrej/php5
 sudo apt-get update -qq
 #note: running the following apt-get commands as one liner used to generate errors messages such as
 #'Failed to fetch http://.../blahblah.deb  403  Forbidden [IP: 91.189.88.152 80]'
 sudo apt-get install -qq unzip
 sudo apt-get install -qq python-pip
-sudo apt-get install -qq libjson-c2 
-sudo apt-get install -qq libjson-c-dev 
+sudo apt-get install -qq libjson-c2
+sudo apt-get install -qq libjson-c-dev
 sudo apt-get install -qq libmunge2
 sudo apt-get install -qq libmunge-dev
 sudo apt-get install -qq libcurl4-openssl-dev
@@ -50,7 +49,7 @@ Vagrant.configure("2") do |global_config|
             config.vm.synced_folder "shared-folder", "/shared-folder"
 
             config.vm.provider :virtualbox do |v|
-                v.customize ["modifyvm", :id, "--memory", "4096"]
+                v.customize ["modifyvm", :id, "--memory", "2048"]
             end
 
             config.vm.provision :shell,
